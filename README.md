@@ -34,7 +34,7 @@ This project demonstrates several Java programming tasks by separating code into
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/harshlsoni/-Array_and_ArrayList.git
    cd your-repo
 
 2. **Compile the Java Files**
