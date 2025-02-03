@@ -57,4 +57,17 @@ public class ArrayOperations {
         }
         return minIndex;
     }
+
+     /**
+     * Converts an integer array to an ArrayList of Integers.
+     * @param array the input array.
+     * @return an ArrayList containing the array elements.
+     */
+    public static ArrayList<Integer> arrayToArrayList(int[] array) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int num : array) {
+            list.add(num);
+        }
+        return list;
+    }
 }
