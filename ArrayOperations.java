@@ -70,4 +70,17 @@ public class ArrayOperations {
         }
         return list;
     }
+
+    /**
+     * Converts an ArrayList of Integers to an integer array.
+     * @param list the input ArrayList.
+     * @return an array containing the elements of the ArrayList.
+     */
+    public static int[] arrayListToArray(ArrayList<Integer> list) {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
+        }
+        return array;
+    }
 }
