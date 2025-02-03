@@ -33,3 +33,28 @@ public class ArrayOperations {
         System.out.println("Even numbers: " + Arrays.toString(even));
         System.out.println("Odd numbers: " + Arrays.toString(odd));
     }
+
+    /**
+     * Finds two neighboring numbers in the array with the smallest absolute difference.
+     * param -  arr the input array of integers.
+     * returns the index of the first number in the pair, or -1 if not applicable.
+     */
+    public static int findMinDistanceNeighborIndex(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("Array does not have enough elements to find neighbors.");
+            return -1;
+        }
+        
+        int minIndex = 0;
+        int minDiff = Math.abs(arr[1] - arr[0]);
+        
+        for (int i = 1; i < arr.length - 1; i++) {
+            int diff = Math.abs(arr[i + 1] - arr[i]);
+            if (diff < minDiff) {
+                minDiff = diff;
+                minIndex = i;
+            }
+        }
+        return minIndex;
+    }
+}
