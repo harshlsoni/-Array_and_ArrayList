@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,25 +8,48 @@ public class Main {
         UserInput input = new UserInput();
         int[] numbers = input.getNumbers();
         
-        // 1. Separate numbers into even and odd arrays.
-        System.out.println("\n--- Separating Even and Odd Numbers ---");
-        ArrayOperations.separateEvenOdd(numbers);
+        Scanner scanner = new Scanner(System.in);
+        boolean exit = false;
         
-        // 2. Find the two neighboring numbers with the smallest distance.
-        System.out.println("\n--- Finding Neighboring Numbers with the Smallest Distance ---");
-        int index = ArrayOperations.findMinDistanceNeighborIndex(numbers);
-        if (index != -1 && index + 1 < numbers.length) {
-            System.out.println("The two neighboring numbers with the smallest difference are: " +
-                               numbers[index] + " and " + numbers[index + 1] +
-                               " (starting at index " + index + ").");
+        while (!exit) {
+            System.out.println("\nChoose an operation:");
+            System.out.println("1. Separate Even and Odd Numbers");
+            System.out.println("2. Find Neighboring Numbers with the Smallest Difference");
+            System.out.println("3. Convert Array to ArrayList and Back");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice (1-4): ");
+            
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("\n--- Separating Even and Odd Numbers ---");
+                    ArrayOperations.separateEvenOdd(numbers);
+                    break;
+                case 2:
+                    System.out.println("\n--- Finding Neighboring Numbers with the Smallest Difference ---");
+                    int index = ArrayOperations.findMinDistanceNeighborIndex(numbers);
+                    if (index != -1 && index + 1 < numbers.length) {
+                        System.out.println("The two neighboring numbers with the smallest difference are: " +
+                                           numbers[index] + " and " + numbers[index + 1] +
+                                           " (starting at index " + index + ").");
+                    }
+                    break;
+                case 3:
+                    System.out.println("\n--- Converting Array to ArrayList and Back ---");
+                    ArrayList<Integer> numberList = ArrayOperations.arrayToArrayList(numbers);
+                    System.out.println("Converted ArrayList: " + numberList);
+                    
+                    int[] convertedArray = ArrayOperations.arrayListToArray(numberList);
+                    System.out.println("Converted back to Array: " + Arrays.toString(convertedArray));
+                    break;
+                case 4:
+                    System.out.println("Exiting the application. Goodbye!");
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select an option between 1 and 4.");
+            }
         }
-        
-        // 3. Convert the array into an ArrayList and then back into an array.
-        System.out.println("\n--- Converting Array to ArrayList and Back ---");
-        ArrayList<Integer> numberList = ArrayOperations.arrayToArrayList(numbers);
-        System.out.println("Converted ArrayList: " + numberList);
-        
-        int[] convertedArray = ArrayOperations.arrayListToArray(numberList);
-        System.out.println("Converted back to Array: " + Arrays.toString(convertedArray));
+        scanner.close();
     }
 }
